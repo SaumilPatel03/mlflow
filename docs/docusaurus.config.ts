@@ -63,6 +63,10 @@ const config: Config = {
         googleTagManager: {
           containerId: process.env.GTM_ID || "GTM-TEST",
         },
+        gtag: {
+          trackingID: process.env.GTM_ID || "GTM-TEST",
+          anonymizeIP: true,
+        },
       } satisfies Preset.Options,
     ],
   ],
@@ -171,6 +175,14 @@ const config: Config = {
             to: "/tracing",
             from: ["/llms/tracing"],
           },
+          {
+            to: "dataset",
+            from: ["/tracking/data-api/index"],
+          },
+          {
+            to: "model",
+            from: ["/models"],
+          }
         ],
       },
     ],
